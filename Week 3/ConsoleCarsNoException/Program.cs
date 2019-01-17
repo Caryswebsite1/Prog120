@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,12 +15,11 @@ namespace ConsoleCarsExcpeptions
             string ErrorMessage = "All is well";
 
 
-            //PUT  try catches in while loop switch to catch throws from car class and to set ErrorMessage
+            // Put try / catch over switch in while loop to catch throws from car class and to set ErrorMessage
             bool bHadError = false;  // to check if we had an error this loop
             bool done = false; // loop control variable
             while (!done)
             {
-                bHadError = false;  // not really needed here...
                 Console.WriteLine();
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("start = start engine, stop = stop engine");
@@ -55,28 +54,31 @@ namespace ConsoleCarsExcpeptions
                         default:
                             Console.WriteLine("Not a valid input.");
                             break;
-                    }
+                    } // end switch
+
                 }// end try
-                catch(ApplicationException ex)
+                catch (ApplicationException ex)
                 {
+                    // Set the ErrorMessage to exceptions message,
+                    // and set error flag to true so we can reset after we display error.
                     ErrorMessage = ex.Message;
                     bHadError = true;
-                    // if one of ours, set the ErrorMessage to exceptions message,
-                    // if not, then set ErrorMessage to "All is well" 
-                }
 
-               
+                } // end catch
+
                 // at the end of each command, call this method to show status
                 DisplayCarState(ErrorMessage, myCar);
+
                 if (bHadError)  // reset error message now
                 {
+                    // Reset ErrorMessage to "All is well" and reset error flag
                     ErrorMessage = "All is well";
                     bHadError = false;
                 }
-            }
+            }// end while
             Console.ReadLine();
 
-        }
+        }// end main
 
         private static void DisplayCarState(string msg, Car myCar)
         {
