@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,20 +20,20 @@ namespace ClassLibrary1
             _EngineRunning = false;
         }
 
-      
+
         public bool EngineRunning   // Property to allow reading the current value
-        {   get   {   return _EngineRunning;   }   }
+        { get { return _EngineRunning; } }
 
         public decimal CurrentSpeedMPH    // Property to allow reading the current value
-        {   get   {   return _CurrentSpeedMPH;   }   }
-     
+        { get { return _CurrentSpeedMPH; } }
 
-    
+
+
         public void StartEngine()  // method used to start car's engine
         {
-           if(_EngineRunning)
+            if (_EngineRunning)
             {
-                throw new ApplicationException("Starter Complains Loudly!  The engine is already running!");
+                throw new ApplicationException("Starter Complains Loudly!  Engine is already started.");
             }
             _EngineRunning = true;
         }
@@ -42,7 +42,7 @@ namespace ClassLibrary1
         {
             if (!_EngineRunning)
             {
-                throw new ApplicationException("Nothing happens.... The engine is already off!");
+                throw new ApplicationException("Nothing happens.... Engine is not running.");
             }
             _EngineRunning = false;
         }
@@ -52,7 +52,7 @@ namespace ClassLibrary1
         {
             if (!_EngineRunning)
             {
-                throw new ApplicationException("You are disapointed by the absolute lack of accelleration. The engine is Off!");
+                throw new ApplicationException("You are disapointed by the absolute lack of acceleration. Please start engine.");
             }
             else
             {
@@ -73,6 +73,6 @@ namespace ClassLibrary1
             }
         }
 
-       
+
     }
 }
